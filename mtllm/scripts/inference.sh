@@ -14,15 +14,15 @@ gen_set=$2
 
 
 FAIRSEQ_ROOT=${PWD}
-DATA_DIR=$FAIRSEQ_ROOT/examples/wavllm/test_data
+DATA_DIR=$FAIRSEQ_ROOT/examples/mtllm/test_data
 
 for subset in $gen_set; do
     results_path=$src_dir/decode_${cpt}_beam${beam_size}/${subset}
     [ ! -d $results_path ] && mkdir -p $results_path
 
-    python $FAIRSEQ_ROOT/examples/wavllm/inference/generate.py $DATA_DIR \
-    --user-dir examples/wavllm \
-    --tokenizer-path $FAIRSEQ_ROOT/examples/wavllm/tokenizer/tokenizer.model \
+    python $FAIRSEQ_ROOT/examples/mtllm/inference/generate.py $DATA_DIR \
+    --user-dir examples/mtllm \
+    --tokenizer-path $FAIRSEQ_ROOT/examples/mtllm/tokenizer/tokenizer.model \
     --gen-subset ${subset} \
     \
     --task speechllm_task \
